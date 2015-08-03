@@ -13,6 +13,10 @@
 		68E0DEA11B6FB7B20093AAB2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68E0DEA01B6FB7B20093AAB2 /* Images.xcassets */; };
 		68E0DEA41B6FB7B20093AAB2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68E0DEA21B6FB7B20093AAB2 /* LaunchScreen.xib */; };
 		68E0DEB01B6FB7B20093AAB2 /* Lomotif_IosTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DEAF1B6FB7B20093AAB2 /* Lomotif_IosTaskTests.swift */; };
+		68E0DED61B6FBF5D0093AAB2 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DED51B6FBF5D0093AAB2 /* PlaylistModel.swift */; };
+		68E0DEDB1B6FC4C00093AAB2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DEDA1B6FC4C00093AAB2 /* SwiftyJSON.swift */; };
+		68E0DEDE1B6FC55B0093AAB2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DEDD1B6FC55B0093AAB2 /* NetworkManager.swift */; };
+		68E0DEE11B6FC9330093AAB2 /* SingletonArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DEE01B6FC9330093AAB2 /* SingletonArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,11 @@
 		68E0DEA91B6FB7B20093AAB2 /* Lomotif-IosTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lomotif-IosTaskTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E0DEAE1B6FB7B20093AAB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68E0DEAF1B6FB7B20093AAB2 /* Lomotif_IosTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lomotif_IosTaskTests.swift; sourceTree = "<group>"; };
+		68E0DED51B6FBF5D0093AAB2 /* PlaylistModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
+		68E0DED91B6FC4C00093AAB2 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
+		68E0DEDA1B6FC4C00093AAB2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		68E0DEDD1B6FC55B0093AAB2 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		68E0DEE01B6FC9330093AAB2 /* SingletonArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +86,14 @@
 		68E0DE961B6FB7B10093AAB2 /* Lomotif-IosTask */ = {
 			isa = PBXGroup;
 			children = (
+				68E0DEDF1B6FC91B0093AAB2 /* Internal DataStructure */,
+				68E0DEDC1B6FC5480093AAB2 /* Network */,
+				68E0DED41B6FBF490093AAB2 /* Model */,
 				68E0DE991B6FB7B20093AAB2 /* AppDelegate.swift */,
 				68E0DE9B1B6FB7B20093AAB2 /* ViewController.swift */,
+				68E0DED91B6FC4C00093AAB2 /* SwiftyJSON.h */,
+				68E0DEDA1B6FC4C00093AAB2 /* SwiftyJSON.swift */,
 				68E0DE9D1B6FB7B20093AAB2 /* Main.storyboard */,
-				68E0DEA01B6FB7B20093AAB2 /* Images.xcassets */,
-				68E0DEA21B6FB7B20093AAB2 /* LaunchScreen.xib */,
 				68E0DE971B6FB7B10093AAB2 /* Supporting Files */,
 			);
 			path = "Lomotif-IosTask";
@@ -90,6 +102,8 @@
 		68E0DE971B6FB7B10093AAB2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				68E0DEA21B6FB7B20093AAB2 /* LaunchScreen.xib */,
+				68E0DEA01B6FB7B20093AAB2 /* Images.xcassets */,
 				68E0DE981B6FB7B10093AAB2 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -110,6 +124,30 @@
 				68E0DEAE1B6FB7B20093AAB2 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68E0DED41B6FBF490093AAB2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				68E0DED51B6FBF5D0093AAB2 /* PlaylistModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		68E0DEDC1B6FC5480093AAB2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				68E0DEDD1B6FC55B0093AAB2 /* NetworkManager.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		68E0DEDF1B6FC91B0093AAB2 /* Internal DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				68E0DEE01B6FC9330093AAB2 /* SingletonArray.swift */,
+			);
+			name = "Internal DataStructure";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +199,7 @@
 				TargetAttributes = {
 					68E0DE931B6FB7B10093AAB2 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = V7CDVXVD4W;
 					};
 					68E0DEA81B6FB7B20093AAB2 = {
 						CreatedOnToolsVersion = 6.4;
@@ -213,7 +252,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E0DE9C1B6FB7B20093AAB2 /* ViewController.swift in Sources */,
+				68E0DED61B6FBF5D0093AAB2 /* PlaylistModel.swift in Sources */,
+				68E0DEDE1B6FC55B0093AAB2 /* NetworkManager.swift in Sources */,
 				68E0DE9A1B6FB7B20093AAB2 /* AppDelegate.swift in Sources */,
+				68E0DEDB1B6FC4C00093AAB2 /* SwiftyJSON.swift in Sources */,
+				68E0DEE11B6FC9330093AAB2 /* SingletonArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +383,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Lomotif-IosTask/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -350,6 +398,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Lomotif-IosTask/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
