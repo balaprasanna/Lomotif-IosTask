@@ -9,10 +9,11 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    
+    @IBOutlet weak var tableView: UITableView!
+    var timer = NSTimer()
     var collection = Array<PlaylistModel>();
     
     override func viewDidLoad() {
@@ -20,22 +21,20 @@ class ViewController: UIViewController {
         
         // Add observer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "DataPopulatedNotification:", name:"JsonPopulatesLocalModelAfterANetworkCall", object: nil)
+        
+        tableView.delegate = self;
+        tableView.dataSource = self;
 
-        // Do any additional setup after loading the view, typically from a nib.
         NetworkManager().performNetworkOps();
-        print("When are u getting printed");
-        println("Finally data");
-        println("Data populated");
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //NSTimer.scheduledTimerWithTimeInterval(0.1, target: self.tableView, selector: Selector("reloadData"), userInfo: nil, repeats: true)
+        //potentially dangerous...but let it be for a while
+        
     }
     
     func DataPopulatedNotification(notification: NSNotification){
         //Take Action on Notification
         println("Objetcs count \(SingletonModelDB.sharedInstance.arrayOfPlaylistItems.count)")
+        self.tableView.reloadData();
     }
     
     deinit
@@ -44,6 +43,20 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SingletonModelDB.sharedInstance.arrayOfPlaylistItems.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell: CustomCell = tableView.dequeueReusableCellWithIdentifier("CustomCell") as! CustomCell
+        
+        cell.title.text = SingletonModelDB.sharedInstance.arrayOfPlaylistItems[indexPath.row].title;
+        //cell.imageview.image = UIImage(named: ""));
+            //SingletonModelDB.sharedInstance.arrayOfPlaylistItems[0].title;
+        cell.name.text = SingletonModelDB.sharedInstance.arrayOfPlaylistItems[indexPath.row].name;
+        return cell
+    }
+    
+ 
 }
 

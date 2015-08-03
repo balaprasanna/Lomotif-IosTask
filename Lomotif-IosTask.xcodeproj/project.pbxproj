@@ -17,6 +17,7 @@
 		68E0DEDB1B6FC4C00093AAB2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DEDA1B6FC4C00093AAB2 /* SwiftyJSON.swift */; };
 		68E0DEDE1B6FC55B0093AAB2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DEDD1B6FC55B0093AAB2 /* NetworkManager.swift */; };
 		68E0DEE11B6FC9330093AAB2 /* SingletonArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DEE01B6FC9330093AAB2 /* SingletonArray.swift */; };
+		68E0DEE41B6FDB390093AAB2 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E0DEE31B6FDB390093AAB2 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		68E0DEDA1B6FC4C00093AAB2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		68E0DEDD1B6FC55B0093AAB2 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		68E0DEE01B6FC9330093AAB2 /* SingletonArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonArray.swift; sourceTree = "<group>"; };
+		68E0DEE31B6FDB390093AAB2 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCell.swift; path = Cell/CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				68E0DE9B1B6FB7B20093AAB2 /* ViewController.swift */,
 				68E0DE9D1B6FB7B20093AAB2 /* Main.storyboard */,
 				68E0DE971B6FB7B10093AAB2 /* Supporting Files */,
+				68E0DEE31B6FDB390093AAB2 /* CustomCell.swift */,
 			);
 			path = "Lomotif-IosTask";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				68E0DEDE1B6FC55B0093AAB2 /* NetworkManager.swift in Sources */,
 				68E0DE9A1B6FB7B20093AAB2 /* AppDelegate.swift in Sources */,
 				68E0DEDB1B6FC4C00093AAB2 /* SwiftyJSON.swift in Sources */,
+				68E0DEE41B6FDB390093AAB2 /* CustomCell.swift in Sources */,
 				68E0DEE11B6FC9330093AAB2 /* SingletonArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
