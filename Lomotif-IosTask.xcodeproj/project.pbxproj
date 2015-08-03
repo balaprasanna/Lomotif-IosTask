@@ -91,8 +91,6 @@
 				68E0DED41B6FBF490093AAB2 /* Model */,
 				68E0DE991B6FB7B20093AAB2 /* AppDelegate.swift */,
 				68E0DE9B1B6FB7B20093AAB2 /* ViewController.swift */,
-				68E0DED91B6FC4C00093AAB2 /* SwiftyJSON.h */,
-				68E0DEDA1B6FC4C00093AAB2 /* SwiftyJSON.swift */,
 				68E0DE9D1B6FB7B20093AAB2 /* Main.storyboard */,
 				68E0DE971B6FB7B10093AAB2 /* Supporting Files */,
 			);
@@ -137,6 +135,7 @@
 		68E0DEDC1B6FC5480093AAB2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				68E0DEE21B6FCF700093AAB2 /* JSON Helper */,
 				68E0DEDD1B6FC55B0093AAB2 /* NetworkManager.swift */,
 			);
 			name = Network;
@@ -148,6 +147,15 @@
 				68E0DEE01B6FC9330093AAB2 /* SingletonArray.swift */,
 			);
 			name = "Internal DataStructure";
+			sourceTree = "<group>";
+		};
+		68E0DEE21B6FCF700093AAB2 /* JSON Helper */ = {
+			isa = PBXGroup;
+			children = (
+				68E0DED91B6FC4C00093AAB2 /* SwiftyJSON.h */,
+				68E0DEDA1B6FC4C00093AAB2 /* SwiftyJSON.swift */,
+			);
+			name = "JSON Helper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
