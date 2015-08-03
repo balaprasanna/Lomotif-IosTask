@@ -29,11 +29,7 @@ class NetworkManager {
             }
             
             let json = JSON(jsonResult)
-            println("found \(json) challenges")
-           
-            //PlaylistModel
             
-
             self.PopulateModel(json);
             
         })
@@ -68,4 +64,5 @@ class NetworkManager {
         NSNotificationCenter.defaultCenter().postNotificationName("JsonPopulatesLocalModelAfterANetworkCall", object: nil)
 
     }
+    
 }

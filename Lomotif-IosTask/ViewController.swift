@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
@@ -26,14 +25,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self;
 
         NetworkManager().performNetworkOps();
-        //NSTimer.scheduledTimerWithTimeInterval(0.1, target: self.tableView, selector: Selector("reloadData"), userInfo: nil, repeats: true)
-        //potentially dangerous...but let it be for a while
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self.tableView, selector: Selector("reloadData"), userInfo: nil, repeats: true)
+        //potentially dangerous theoritically.....but let it be for a while to have a nice non blocking UI.
         
     }
     
     func DataPopulatedNotification(notification: NSNotification){
         //Take Action on Notification
-        println("Objetcs count \(SingletonModelDB.sharedInstance.arrayOfPlaylistItems.count)")
         self.tableView.reloadData();
     }
     
@@ -49,14 +47,42 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: CustomCell = tableView.dequeueReusableCellWithIdentifier("CustomCell") as! CustomCell
+    
+        var model = SingletonModelDB.sharedInstance.arrayOfPlaylistItems[indexPath.row];
+        cell.title.text = model.title;
         
-        cell.title.text = SingletonModelDB.sharedInstance.arrayOfPlaylistItems[indexPath.row].title;
-        //cell.imageview.image = UIImage(named: ""));
-            //SingletonModelDB.sharedInstance.arrayOfPlaylistItems[0].title;
-        cell.name.text = SingletonModelDB.sharedInstance.arrayOfPlaylistItems[indexPath.row].name;
+        if (model.image == nil) {
+            if let checkedUrl = NSURL(string: model.imageUrl)
+            {
+                downloadImage(checkedUrl,row: indexPath.row)
+            }
+            cell.imageview.image = UIImage(named: "placeholder");
+        }
+        else
+        {
+            cell.imageview.image = model.image!;
+        }
+        
+        cell.name.text = model.name;
         return cell
     }
     
+    func downloadImage(url:NSURL,row:Int){
+        getDataFromUrl(url) { data in
+            dispatch_async(dispatch_get_main_queue()) {
+
+                SingletonModelDB.sharedInstance.arrayOfPlaylistItems[row].image = UIImage(data: data!);
+                //self.tableView.reloadData();
+                // If you dont want want to see the placeholder image, then uncomment this line,
+            }
+        }
+    }
+    
+    func getDataFromUrl(urL:NSURL, completion: ((data: NSData?) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
+            completion(data: data)
+            }.resume()
+    }
  
 }
 

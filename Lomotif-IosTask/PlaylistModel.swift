@@ -14,12 +14,12 @@ class PlaylistModel
     var imageUrl:String
     var title:String
     var name:String
-//    var image:UIImage
+    var image:UIImage?
     init() {
         imageUrl = "";
         title = "";
         name = "";
-        //image = UIImage(named: "AppIcon");
+        image = nil;
     }
     
 }
