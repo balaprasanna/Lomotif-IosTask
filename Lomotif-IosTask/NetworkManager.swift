@@ -11,18 +11,19 @@ import UIKit
 
 class NetworkManager {
     
-    let SongSearchUrl = "https://itunes.apple.com/search?term="
+    let ITunesPreivewSongSearchbaseUrl = "https://itunes.apple.com/search?term="
     var TopSongsbaseUrl:String = "https://itunes.apple.com/sg/rss/topsongs/limit=50/explicit=true/json";
     
-    var searchTerm = "ar rahman"
+    var searchTerm = "ar+rahman"
     //Computed Property
     var SearchURL :String{
         get{
-            return SongSearchUrl + searchTerm
+            return ITunesPreivewSongSearchbaseUrl + searchTerm
         }
     }
     func performNetworkOps(baseUrl:String, callback:(j:JSON) -> Void){
         let urlPath = baseUrl
+        println("test \(baseUrl)")
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
@@ -46,7 +47,7 @@ class NetworkManager {
         task.resume()
     }
     
-    func PopulateModel(json:JSON){
+    func PopulatePlaylistModel(json:JSON){
         let count: Int? = json["feed"]["entry"].array?.count
 
         if let ct = count {
@@ -70,6 +71,9 @@ class NetworkManager {
         // Send Notification about model change to controller
         NSNotificationCenter.defaultCenter().postNotificationName("JsonPopulatesLocalModelAfterANetworkCall", object: nil)
 
+    }
+    func PopulateSongsModel(json:JSON){
+        //println("\(json)")
     }
     
     func downloadImage(url:NSURL,row:Int){

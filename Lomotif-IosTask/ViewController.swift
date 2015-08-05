@@ -4,7 +4,6 @@
 //
 //  Created by Prasanna V on 03/08/15.
 //  Copyright (c) 2015 swift. All rights reserved.
-//
 
 import UIKit
 
@@ -25,15 +24,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self;
         tableView.dataSource = self;
 
-//        netman.performNetworkOps(netman.TopSongsbaseUrl,
-//            callback: {
-//                    println("Hello world Clousure")
-//            });
-        
         netman.performNetworkOps(netman.TopSongsbaseUrl, callback: { (j) -> Void in
-            self.netman.PopulateModel(j)
+            self.netman.PopulatePlaylistModel(j)
         })
-        
+
+        netman.performNetworkOps(netman.SearchURL, callback: { (j) -> Void in
+            self.netman.PopulateSongsModel(j)
+        })
+
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self.tableView, selector: Selector("reloadData"), userInfo: nil, repeats: true)
     }
     
@@ -61,7 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             {
                 netman.downloadImage(checkedUrl,row: indexPath.row)
             }
-            cell.imageview.image = UIImage(named: "placeholder");
+            cell.imageview.image = UIImage(named: "placeholderwhite");
         }
         else
         {
