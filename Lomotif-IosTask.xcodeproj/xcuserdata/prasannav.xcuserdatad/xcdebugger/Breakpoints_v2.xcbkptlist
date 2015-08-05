@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lomotif-IosTask/ViewController.swift"
-            timestampString = "460320959.995157"
+            timestampString = "460457994.756003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -38,16 +38,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lomotif-IosTask/ViewController.swift"
-            timestampString = "460320959.995157"
+            filePath = "Lomotif-IosTask/Views/ViewManager.swift"
+            timestampString = "460452502.030596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "DataPopulatedNotification(_:)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "giveMeAButton(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

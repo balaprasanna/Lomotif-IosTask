@@ -12,32 +12,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     @IBOutlet weak var tableView: UITableView!
-    var timer = NSTimer()
-    var collection = Array<PlaylistModel>();
+    lazy var netman = NetworkManager()
+    lazy var viewman = ViewManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
+        presentNewButton()
         // Add observer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "DataPopulatedNotification:", name:"JsonPopulatesLocalModelAfterANetworkCall", object: nil)
         
         tableView.delegate = self;
         tableView.dataSource = self;
 
-        NetworkManager().performNetworkOps();
-        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self.tableView, selector: Selector("reloadData"), userInfo: nil, repeats: true)
-        //potentially dangerous theoritically.....but let it be for a while to have a nice non blocking UI.
+//        netman.performNetworkOps(netman.TopSongsbaseUrl,
+//            callback: {
+//                    println("Hello world Clousure")
+//            });
         
+        netman.performNetworkOps(netman.TopSongsbaseUrl, callback: { (j) -> Void in
+            self.netman.PopulateModel(j)
+        })
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self.tableView, selector: Selector("reloadData"), userInfo: nil, repeats: true)
     }
     
     func DataPopulatedNotification(notification: NSNotification){
-        //Take Action on Notification
         self.tableView.reloadData();
     }
     
     deinit
     {
-        // Remove from all notifications being observed
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
@@ -54,7 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (model.image == nil) {
             if let checkedUrl = NSURL(string: model.imageUrl)
             {
-                downloadImage(checkedUrl,row: indexPath.row)
+                netman.downloadImage(checkedUrl,row: indexPath.row)
             }
             cell.imageview.image = UIImage(named: "placeholder");
         }
@@ -67,22 +72,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func downloadImage(url:NSURL,row:Int){
-        getDataFromUrl(url) { data in
-            dispatch_async(dispatch_get_main_queue()) {
-
-                SingletonModelDB.sharedInstance.arrayOfPlaylistItems[row].image = UIImage(data: data!);
-                //self.tableView.reloadData();
-                // If you dont want want to see the placeholder image, then uncomment this line,
-            }
-        }
+    func presentNewButton()
+    {
+        var rect = CGRectMake(self.view.frame.width - viewman.AppConsts.buttonWidth - 5, viewman.AppConsts.buttonHeight/2 + 0.0, viewman.AppConsts.buttonWidth, viewman.AppConsts.buttonHeight)
+        var newbutton = viewman.giveMeAButton(rect)
+        newbutton.addTarget(self, action:"newButtonClickHandler" , forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(newbutton);
     }
     
-    func getDataFromUrl(urL:NSURL, completion: ((data: NSData?) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
-            completion(data: data)
-            }.resume()
+    func newButtonClickHandler(){
+        println("Clicked -> Ready to go")
     }
- 
+    
 }
 

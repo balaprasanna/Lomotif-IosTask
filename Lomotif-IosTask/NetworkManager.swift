@@ -7,11 +7,21 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkManager {
     
-    func performNetworkOps(){
-        var baseUrl:String = "https://itunes.apple.com/sg/rss/topsongs/limit=50/explicit=true/json";
+    let SongSearchUrl = "https://itunes.apple.com/search?term="
+    var TopSongsbaseUrl:String = "https://itunes.apple.com/sg/rss/topsongs/limit=50/explicit=true/json";
+    
+    var searchTerm = "ar rahman"
+    //Computed Property
+    var SearchURL :String{
+        get{
+            return SongSearchUrl + searchTerm
+        }
+    }
+    func performNetworkOps(baseUrl:String, callback:(j:JSON) -> Void){
         let urlPath = baseUrl
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -30,7 +40,7 @@ class NetworkManager {
             
             let json = JSON(jsonResult)
             
-            self.PopulateModel(json);
+            callback(j: json);
             
         })
         task.resume()
@@ -46,15 +56,12 @@ class NetworkManager {
                 
                 if let title = json["feed"]["entry"][index]["im:name"]["label"].string {
                     model.title = title;
-                    println(title)
                 }
                 if let imageurl = json["feed"]["entry"][index]["im:image"][2]["label"].string {
                     model.imageUrl = imageurl
-                    println(imageurl)
                 }
                 if let name = json["feed"]["entry"][index]["im:artist"]["label"].string {
                     model.name = name;
-                    println(name)
                 }
                 
                 SingletonModelDB.sharedInstance.arrayOfPlaylistItems.append(model)
@@ -65,4 +72,18 @@ class NetworkManager {
 
     }
     
+    func downloadImage(url:NSURL,row:Int){
+        getDataFromUrl(url) { data in
+            dispatch_async(dispatch_get_main_queue()) {
+                SingletonModelDB.sharedInstance.arrayOfPlaylistItems[row].image = UIImage(data: data!);
+            }
+        }
+    }
+    
+    func getDataFromUrl(urL:NSURL, completion: ((data: NSData?) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
+            completion(data: data)
+            }.resume()
+    }
+
 }
